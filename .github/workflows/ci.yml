@@ -1,0 +1,27 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: [stable, "1.73"]
+    steps:
+      - uses: actions/checkout@v7
+      - run: rustup toolchain install ${{ matrix.toolchain }} --profile minimal --component rustfmt,clippy --no-self-update
+      - run: rustup override set ${{ matrix.toolchain }}
+      - if: matrix.toolchain == 'stable'
+        run: cargo fmt --all -- --check
+      - if: matrix.toolchain == 'stable'
+        run: cargo clippy --all-targets --locked -- -D warnings
+      - run: cargo test --locked
+      - run: cargo test --release --locked
+      - run: cargo build --locked
+      - run: cp tests/fixtures/basic.csv transactions.csv && cargo run --locked -- transactions.csv > accounts.csv
+      - run: diff -u tests/fixtures/basic.expected.csv accounts.csv

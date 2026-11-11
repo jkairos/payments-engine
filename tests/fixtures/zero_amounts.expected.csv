@@ -1,0 +1,4 @@
+client,available,held,total,locked
+40,0.0000,0.0000,0.0000,true
+41,-10.0000,10.0000,0.0000,false
+42,0.0000,0.0000,0.0000,false

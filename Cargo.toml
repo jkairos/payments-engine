@@ -1,0 +1,10 @@
+[package]
+name = "payments-engine"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.73"
+description = "Applies a CSV stream of account transactions and prints client balances"
+
+[dependencies]
+csv = "1.4"
+serde = { version = "1.0.229", features = ["derive"] }

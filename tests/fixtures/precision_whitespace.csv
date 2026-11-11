@@ -1,0 +1,11 @@
+type, client, tx, amount
+deposit,    2,   1,   0.0001
+  deposit,2,2,0.0009
+deposit , 2 , 3 , 1
+deposit,2,4,2.5
+deposit,2,5,3.25
+deposit,2,6,4.125
+deposit,2,7,5.0625
+withdrawal,2,8,0.001
+deposit,0,0,0.5
+deposit,65535,4294967295,922337203685477.5807
