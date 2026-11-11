@@ -115,4 +115,9 @@ Local runs on 2026-11-10, Linux x86_64:
 | `cargo run -- transactions.csv > accounts.csv` with `basic.csv` | 1.93.1 | Output identical to `basic.expected.csv` |
 | Build, both test profiles and the command above from a fresh copy of the tracked files with an empty Cargo home | 1.93.1 | All passed |
 
-Hosted CI and the fresh-clone check from GitHub are recorded here once they have run.
+Hosted and clone checks for commit `d1d54c7`:
+
+| Check | Result |
+|---|---|
+| GitHub Actions, stable and 1.73 jobs | Both passed ([run 42932195497](https://github.com/jkairos/payments-engine/actions/runs/42932195497)) |
+| Anonymous HTTPS clone, empty Cargo home: `cargo build --locked`, both test profiles, `cargo run -- tests/fixtures/basic.csv > accounts.csv`, and the `transactions.csv` interface | 74 passed in each profile; both outputs identical to `basic.expected.csv` |
